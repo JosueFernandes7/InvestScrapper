@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de Tabela com Bootstrap</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          // Formatação para Valorização Mensal
+          var valorizacaoElement = document.getElementById("valorizacao");
+          var valorizacao = parseFloat(valorizacaoElement.textContent.replace("R$ ", "").replace(",", "."));
+
+          if (valorizacao > 0) {
+              valorizacaoElement.classList.add("text-success");
+          } else if (valorizacao < 0) {
+              valorizacaoElement.classList.add("text-danger");
+          }
+
+          // Formatação para Perda ou Ganho
+          var perdaGanhoElement = document.getElementById("perdaGanho");
+          var perdaGanho = parseFloat(perdaGanhoElement.textContent.replace("R$ ", "").replace(",", "."));
+
+          if (perdaGanho > 0) {
+              perdaGanhoElement.classList.add("text-success");
+          } else if (perdaGanho < 0) {
+              perdaGanhoElement.classList.add("text-danger");
+          }
+      });
+  </script>
+</head>
+<body>
+
+<div class="container">
+    <h2>{{nome}} em {{dataAtual}}</h2>
+    
+    <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">Valor Investido</th>
+              <th scope="col">Perda ou Ganho</th>
+              <th scope="col">Total</th>
+              <th scope="col">Valorização Mensal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td id="valorInvestido">R$ {{valorInvestido}}</td>
+              <td id="perdaGanho">R$ {{mod}}</td>
+              <td id="total">R$ {{total}}</td>
+              <td id="valorizacao">R$ {{valorizacao}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
